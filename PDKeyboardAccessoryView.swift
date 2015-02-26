@@ -16,11 +16,18 @@ class PDKeyboardAccessoryView: UIInputView
     {
         self.responder = responder
         super.init(frame: frame, inputViewStyle: UIInputViewStyle.Keyboard)
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
         var view = NSBundle.mainBundle().loadNibNamed("PDKeyboardAccessoryView", owner: self, options: nil).first as UIView!
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.addSubview(view)
         PDUtilities.addConstraintsForSubview(view, toFillSuperView: self)
+        if systemIsPreIOS8()
+        {
+            self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+        }
+        else
+        {
+            self.setTranslatesAutoresizingMaskIntoConstraints(false)
+            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        }
     }
 
     required init(coder aDecoder: NSCoder)
