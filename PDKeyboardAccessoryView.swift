@@ -25,15 +25,15 @@ class PDKeyboardAccessoryView: UIInputView
         }
         else
         {
-            self.setTranslatesAutoresizingMaskIntoConstraints(false)
-            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self.translatesAutoresizingMaskIntoConstraints = false
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 
     required init(coder aDecoder: NSCoder)
     {
         self.responder = UIResponder()
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
 
     @IBAction func donePressed(sender: AnyObject)
