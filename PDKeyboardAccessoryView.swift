@@ -11,6 +11,7 @@ import UIKit
 class PDKeyboardAccessoryView: UIInputView
 {
     var responder: UIResponder
+    @IBOutlet weak var titleLabel: UILabel!
     
     init(frame: CGRect, responder: UIResponder)
     {
@@ -18,7 +19,12 @@ class PDKeyboardAccessoryView: UIInputView
         super.init(frame: frame, inputViewStyle: UIInputViewStyle.Keyboard)
         let view = NSBundle.mainBundle().loadNibNamed("PDKeyboardAccessoryView", owner: self, options: nil).first as! UIView!
         self.addSubview(view)
-        PDUtilities.addConstraintsForSubview(view, toFillSuperView: self)
+        
+        self.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
+        
         if systemIsPreIOS8()
         {
             self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
