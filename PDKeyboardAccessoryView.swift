@@ -17,7 +17,7 @@ class PDKeyboardAccessoryView: UIInputView
     {
         self.responder = responder
         super.init(frame: frame, inputViewStyle: UIInputViewStyle.Keyboard)
-        let view = NSBundle.mainBundle().loadNibNamed("PDKeyboardAccessoryView", owner: self, options: nil).first as! UIView!
+        let view = NSBundle.mainBundle().loadNibNamed("PDKeyboardAccessoryView", owner: self, options: nil)!.first as! UIView
         self.addSubview(view)
         
         self.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
